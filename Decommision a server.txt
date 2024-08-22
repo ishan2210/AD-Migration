@@ -1,0 +1,1 @@
+https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/remove-orphaned-domains

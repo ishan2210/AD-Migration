@@ -1,0 +1,26 @@
+Command to Disable SID Filtering
+NETDOM TRUST india.com /Domain:bitscape.ishan-kansara.in /Quarantine:No 
+---------------------------------------------------------------------------
+Command to display SID
+Get-LocalUser -Name 'tenders@merittrac.com' | Select-Object  sid
+----------------------------------------------------------------------------
+Command to generate Encryption Key:
+ADMT Key /Option:Create /SourceDomain:bitscape.ishan-kansara.in /KeyFile:C:\FileMigPass.pes /KeyPassword:Pass@123
+-----------------------------------------------------------------------------
+Get SID of all Domains 
+(Get-ADForest).Domains| %{Get-ADDomain -Server $_} | Select-Object name, domainsid
+-------------------------------------------------------------------------------------------
+Get SID History 
+Get-ADUser -Identity urack -Properties SidHistory | Select-Object -ExpandProperty SIDHistory
+-----------------------------------------------------------------------------------------------------
+Command to check status of SID Filtering:
+netdom trust ishan.india.com /domain:bharat.com /quarantine
+-----------------------------------------------------------------------------------------------
+Disable SID Filtering
+Netdom trust merittrac.mul.manipal.net /domain:merittrac.net /quarantine:No
+---------------------------
+https://activedirectoryfaq.com/2015/10/active-directory-sid-filtering/
+------------------------------------------------------------------------------
+
+Get-AdUser -Identity urack | Select Name, SID, UserPrincipalName
+

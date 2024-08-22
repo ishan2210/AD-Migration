@@ -1,0 +1,1 @@
+(Get-ADObject -Filter * -SearchBase "OU=Technology,OU=UNext Users,DC=unext,DC=net").Count

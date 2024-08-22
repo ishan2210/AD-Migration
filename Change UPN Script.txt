@@ -1,0 +1,16 @@
+# Define the old and new UPN suffixes
+#$oldSuffix = "@merittrac.net"
+#$newSuffix = "@merittrac.com"
+
+# Retrieve a list of users whose UPN suffix matches the old suffix in a specific OU
+$users = Get-ADUser -Filter {UserPrincipalName -like "*@merittrac.net"} -SearchBase "DC=merittrac,DC=net"
+
+# Iterate through the list of users and update their UPN suffix
+foreach ($user in $users) {
+    $newUPN = $user.UserPrincipalName.Replace("@merittrac.net", "@merittrac.com")
+
+    # Update the UPN suffix for the user
+    Set-ADUser -Identity $user -UserPrincipalName $newUPN
+
+    Write-Host "Changed UPN for $($user.SamAccountName) from $($user.UserPrincipalName) to $newUPN"
+}

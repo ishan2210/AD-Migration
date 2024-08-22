@@ -1,0 +1,17 @@
+# Import the Active Directory module
+Import-Module ActiveDirectory
+
+# Specify the OU path you want to export users from
+$ouPath = "OU=Technology,OU=UNext Users,DC=unext,DC=net"
+
+# Specify the output file path and name
+$outputFile = "C:\TargetExportedUsers.csv"
+
+# Get users from the specified OU
+$users = Get-ADUser -Filter * -SearchBase $ouPath -Properties *
+
+# Export user information to a CSV file
+$users | Select-Object SamAccountName, GivenName, Surname, DisplayName, UserPrincipalName, EmailAddress, Enabled | Export-Csv -Path $outputFile -NoTypeInformation
+
+# Display a message indicating the export is complete
+Write-Host "Users exported to $outputFile"

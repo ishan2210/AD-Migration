@@ -1,0 +1,11 @@
+ADDirectoryServerOperationMasterRole -Identity AZR-CIN_RDC1 -OperationMasterRole domainnamingmaster -Force
+activate instance ntds
+partition management
+connections
+connect to server <DOMAIN NAMING MASTER>
+
+ntdsutil
+
+metadata cleanup
+
+connections
